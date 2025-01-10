@@ -1,0 +1,12 @@
+---
+  - name: VIM and Nano Insall
+    hosts:  all
+    tasks:
+      - name: Install VIM
+        apt:
+          name: vim
+          state: latest
+      - name: Install Nano
+        apt:
+          name: nano
+          state: latest
