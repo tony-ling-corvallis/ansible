@@ -1,5 +1,5 @@
 ---
-- hosts: "Ubuntu-Servers"
+- hosts: Ubuntu-Servers
   gather_facts: false
   tasks:
     - ping:
