@@ -12,8 +12,8 @@
   - name: Configure SNMP settings
     ansible.snmp.snmp_config:
       community: "server"
-      access: 
-        -  "server"  
+#      access: 
+#        -  "server"  
 #          security: "noAuthNoPriv"
 
   - name: Verify SNMP connectivity
