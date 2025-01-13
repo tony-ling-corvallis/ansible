@@ -14,8 +14,7 @@
       community: "server"
       access: 
         -  "server"  
-          security: "noAuthNoPriv"
-          source: 0.0.0.0/0
+#          security: "noAuthNoPriv"
 
   - name: Verify SNMP connectivity
     ansible.snmp.get:
