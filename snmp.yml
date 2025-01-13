@@ -28,4 +28,4 @@
             name: snmpd
             state: started
             enabled: yes
-          become: true
+        become: true
