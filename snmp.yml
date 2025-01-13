@@ -6,15 +6,8 @@
         apt:
           name: snmpd
           state:  latest
-#      - name: Install SNMP Utils
-#        apt:
-#          name: net-snmp-utils
-#          state: latest
     
-  - name: Configure SNMP v2c Community
-    hosts: all
-    tasks:
-      - name: Use Built In LineInFile
+      - name: Insert Community String
         lineinfile:
           path: /etc/snmp/snmpd.conf
           regexp: 'com2sec readonly  default         server'
@@ -22,9 +15,6 @@
           backrefs: true
         become: true
 
-  - name: Start SNMP Service
-    hosts: all
-    tasks:
       - name: Start Service
         service:
             name: snmpd
