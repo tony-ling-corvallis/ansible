@@ -1,27 +1,24 @@
 --- 
-- name: Install and configure SNMP
-  hosts: all
-  become: yes
-
-  tasks:
-  - name: Install SNMP package
+- name: Install SNMP Packages
     package:
-      name: net-snmp
+      name:
+        - net-snmp
+        - net-snmp-utils
       state: present
+      lock_timeout: 180
+    become: true
+    
+  - name: Configure SNMP v2c Community
+    lineinfile:
+      path: /etc/snmp/snmpd.conf
+      regexp: 'com2sec notConfigUser  default       server'
+      line: 'com2sec notConfigUser  default       <COMMUNITY>'
+      backrefs: true
+    become: true
 
-  - name: Configure SNMP settings
-    ansible.snmp.snmp_config:
-      community: "server"
-#      access: 
-#        -  "server"  
-#          security: "noAuthNoPriv"
-
-  - name: Verify SNMP connectivity
-    ansible.snmp.get:
-      oid: "SNMPv2-MIB::sysDescr.0"
-      community: "server"
-    register: snmp_response
-    delegate_to: librenms.csd509j.net
-    failed_when: snmp_response.failed
-
-  - debug: var=snmp_response.response
+  - name: Start SNMP Service
+    service:
+      name: snmpd
+      state: started
+      enabled: yes
+    become: true
