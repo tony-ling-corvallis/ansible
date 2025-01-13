@@ -13,12 +13,13 @@
     
   - name: Configure SNMP v2c Community
     tasks:
-      ansible.builtin.lineinfile:
-        path: /etc/snmp/snmpd.conf
-        regexp: 'com2sec notConfigUser  default       server'
-        line: 'com2sec notConfigUser  default       <COMMUNITY>'
-        backrefs: true
-      become: true
+      - name: Use Built In LineInFile
+        ansible.builtin.lineinfile:
+          path: /etc/snmp/snmpd.conf
+          regexp: 'com2sec notConfigUser  default       server'
+          line: 'com2sec notConfigUser  default       <COMMUNITY>'
+          backrefs: true
+        become: true
 
   - name: Start SNMP Service
     service:
