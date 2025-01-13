@@ -12,7 +12,7 @@
           state: latest
     
   - name: Configure SNMP v2c Community
-    lineinfile:
+    ansible.builtin.lineinfile:
       path: /etc/snmp/snmpd.conf
       regexp: 'com2sec notConfigUser  default       server'
       line: 'com2sec notConfigUser  default       <COMMUNITY>'
