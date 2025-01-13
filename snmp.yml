@@ -22,8 +22,10 @@
         become: true
 
   - name: Start SNMP Service
-    service:
-      name: snmpd
-      state: started
-      enabled: yes
-    become: true
+    tasks:
+      - name: Star Service
+        service:
+            name: snmpd
+            state: started
+            enabled: yes
+          become: true
