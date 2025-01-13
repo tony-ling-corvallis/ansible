@@ -12,6 +12,7 @@
 #          state: latest
     
   - name: Configure SNMP v2c Community
+    hosts: all
     tasks:
       - name: Use Built In LineInFile
         ansible.builtin.lineinfile:
@@ -22,6 +23,7 @@
         become: true
 
   - name: Start SNMP Service
+    hosts: all
     tasks:
       - name: Star Service
         service:
