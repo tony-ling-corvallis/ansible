@@ -1,27 +1,27 @@
 --- 
 - name: Install SNMP Packages
-    hosts: all
+    hosts:  all
     tasks: 
-      - name: Install SNMP
+      - name:  Install SNMP
         apt:
-          name: net-snmp
-          state: latest
-      - name: Install SNMP Utils
+          name:  net-snmp
+          state:  latest
+      - name:  Install SNMP Utils
         apt:
-          name: net-snmp-utils
-          state: latest
+          name:  net-snmp-utils
+          state:  latest
     
-- name: Configure SNMP v2c Community
+- name:  Configure SNMP v2c Community
   lineinfile:
-    path: /etc/snmp/snmpd.conf
-    regexp: 'com2sec notConfigUser  default       server'
-    line: 'com2sec notConfigUser  default       <COMMUNITY>'
-    backrefs: true
-  become: true
+    path:  /etc/snmp/snmpd.conf
+    regexp:  'com2sec notConfigUser  default       server'
+    line:  'com2sec notConfigUser  default       <COMMUNITY>'
+    backrefs:  true
+  become:  true
 
-- name: Start SNMP Service
+- name:  Start SNMP Service
   service:
-    name: snmpd
-    state: started
-    enabled: yes
-  become: true
+    name:  snmpd
+    state:  started
+    enabled:  yes
+  become:  true
