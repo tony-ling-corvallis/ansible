@@ -25,7 +25,7 @@
   - name: Start SNMP Service
     hosts: all
     tasks:
-      - name: Star Service
+      - name: Start Service
         service:
             name: snmpd
             state: started
