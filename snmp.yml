@@ -4,12 +4,12 @@
     tasks: 
       - name: Install SNMP
         apt:
-          name: net-snmp
+          name: snmpd
           state:  latest
-      - name: Install SNMP Utils
-        apt:
-          name: net-snmp-utils
-          state: latest
+#      - name: Install SNMP Utils
+#        apt:
+#          name: net-snmp-utils
+#          state: latest
     
   - name: Configure SNMP v2c Community
     tasks:
