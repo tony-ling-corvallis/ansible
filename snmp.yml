@@ -1,20 +1,26 @@
 --- 
-  - name: Install SNMP Packages
+  - name: Install SNMP packages.
     hosts: all
     tasks: 
-      - name: Install SNMP
+      - name: Install SNMP.
         apt:
           name: snmpd
           state:  latest
-    
-      - name: Insert Community String
+
+      -name: Remove old community strings.
         lineinfile:
           path: /etc/snmp/snmpd.conf
-#          regexp: '^rocommunity server'
+          regexp: "community public*"
+          regexp: "com2sec*"
+          state: absent
+    
+      - name: Insert community string.
+        lineinfile:
+          path: /etc/snmp/snmpd.conf
+          regexp: '^rocommunity server'
           line: 'rocommunity server'
           create: yes
-#          line: 'com2sec readonly  default         server'
-#          backrefs: true
+          backrefs: true
         become: true
 
       - name: Start Service
