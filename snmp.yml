@@ -9,7 +9,7 @@
     
       - name: Insert Community String
 #        lineinfile:
-      blockinfile:
+        blockinfile:
           path: /etc/snmp/snmpd.conf
           insertafter: "rocommunity"
          content: |
