@@ -4,6 +4,6 @@
     - name: Update and upgrade yum packages
       become: true
       yum:
-        name: *
+        name: '*'
         state: latest
         update_cache: yes
