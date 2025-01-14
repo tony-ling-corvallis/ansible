@@ -4,15 +4,15 @@
     tasks: 
       - name: Install SNMP.
         yum:
-#          name: net-snmp
+          name: net-snmp
           name: net-snmp-utils
           state:  latest
 
-      - name: Remove old community strings.
-        lineinfile:
+      - name: Create conf file.
+        file:
           path: /etc/snmp/snmpd.conf
-          regexp: "agentaddress  127.0.0.1*"
-          state: absent
+          state: touch
+        become: yes
     
       - name: Insert community string.
         lineinfile:
