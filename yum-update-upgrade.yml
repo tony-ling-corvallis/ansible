@@ -5,5 +5,4 @@
       become: true
       yum:
         state: latest
-        upgrade: yes
         update_cache: yes
