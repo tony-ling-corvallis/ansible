@@ -7,10 +7,10 @@
           name: snmpd
           state:  latest
 
-      -name: Remove old community strings.
+      - name: Remove old community strings.
         lineinfile:
           path: /etc/snmp/snmpd.conf
-#          regexp: "community public*"
+          regexp: "community public*"
           regexp: "com2sec*"
           state: absent
     
