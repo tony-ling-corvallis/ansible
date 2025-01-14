@@ -20,6 +20,6 @@
       - name: Start Service
         service:
             name: snmpd
-            state: started
+            state: restarted
             enabled: yes
         become: true
