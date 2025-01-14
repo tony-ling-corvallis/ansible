@@ -1,0 +1,9 @@
+--- 
+- hosts: all
+  tasks:
+    - name: Update and upgrade yum packages
+      become: true
+      yum:
+        state: latest
+        upgrade: yes
+        update_cache: yes
