@@ -10,8 +10,8 @@
       - name: Remove old community strings.
         lineinfile:
           path: /etc/snmp/snmpd.conf
-          regexp: "rocommunity  public*"
-          regexp: "rocommunity6  public*"
+          regexp: "rocommunity  public.*"
+          regexp: "rocommunity6  public.*"
           regexp: "com2sec*"
           state: absent
     
