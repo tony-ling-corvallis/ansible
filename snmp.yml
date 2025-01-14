@@ -10,11 +10,11 @@
       - name: Insert Community String
         lineinfile:
           path: /etc/snmp/snmpd.conf
-          regexp: '^rocommunity server'
+#          regexp: '^rocommunity server'
           line: 'rocommunity server'
           create: yes
 #          line: 'com2sec readonly  default         server'
-          backrefs: true
+#          backrefs: true
         become: true
 
       - name: Start Service
