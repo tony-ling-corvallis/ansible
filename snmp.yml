@@ -11,8 +11,8 @@
         lineinfile:
           path: /etc/snmp/snmpd.conf
           regexp: "rocommunity  public.*"
-          regexp: "rocommunity6  public.*"
-          regexp: "com2sec*"
+#          regexp: "rocommunity6  public.*"
+#          regexp: "com2sec*"
           state: absent
     
       - name: Insert community string.
