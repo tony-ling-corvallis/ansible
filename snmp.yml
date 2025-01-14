@@ -11,9 +11,9 @@
         lineinfile:
           path: /etc/snmp/snmpd.conf
           line: 'rocommunity server'
-#          regexp: 'com2sec readonly  default         server'
+          regexp: 'rocommunity server'
 #          line: 'com2sec readonly  default         server'
-#          backrefs: true
+          backrefs: true
         become: true
 
       - name: Start Service
