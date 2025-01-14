@@ -12,8 +12,7 @@
         blockinfile:
           path: /etc/snmp/snmpd.conf
           insertafter: "rocommunity"
-         content: |
-           rocommunity server
+         content: 'rocommunity  server'
 #          regexp: '^rocommunity server'
 #          line: 'rocommunity server'
 #          line: 'com2sec readonly  default         server'
