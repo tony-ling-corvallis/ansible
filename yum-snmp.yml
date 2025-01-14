@@ -1,5 +1,5 @@
 --- 
-  - name: Install SNMP packages.
+  - name: Install SNMP packages and add community string.
     hosts: all
     tasks: 
       - name: Install SNMP.
