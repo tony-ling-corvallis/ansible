@@ -1,2 +1,6 @@
-- name: This command will start kubectl port-forwarding again
-  ansible.builtin.shell: kubectl port-forward service/awx-ubuntu-service -n ansible-awx --address 0.0.0.0 10445:80 &> /dev/null &
+--- 
+  - name: Start KubeCTL Port Forwarding.
+    hosts: all
+    tasks: 
+      - name: This command will start kubectl port-forwarding again
+        ansible.builtin.shell: kubectl port-forward service/awx-ubuntu-service -n ansible-awx --address 0.0.0.0 10445:80 &> /dev/null &
