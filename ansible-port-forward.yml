@@ -6,4 +6,4 @@
         ansible.builtin.shell: kubectl port-forward service/awx-ubuntu-service -n ansible-awx --address 0.0.0.0 10445:80 &> /dev/null &
         
       - name: Notify when complete.
-        ansible.builtin.shell: curl -H prio:low -d "KubeCTL Port Forwarded" https://ntfy.csd509j.com/ansible
+#        ansible.builtin.shell: curl -H prio:low -d "KubeCTL Port Forwarded" https://ntfy.csd509j.com/ansible
