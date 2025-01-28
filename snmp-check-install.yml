@@ -1,0 +1,31 @@
+--- 
+  - name: Check SNMP installation.  Install and set if needed.
+    hosts: all
+    tasks: 
+      - name: Attempt to retrieve SNMP data (checks if SNMP is installed)
+        ansible.snmp.get:
+        host: "{{ inventory_hostname }}"
+        oid: "SNMPv2-MIB::sysDescr.0" 
+        register: snmp_check
+
+    - name: Check if SNMP retrieval was successful 
+      when: snmp_check.changed == false
+      fail: 
+        msg: "SNMP is not installed or not accessible on the host."
+
+    - name: Install SNMP Packages
+    package:
+      name:
+        - net-snmp
+        - net-snmp-utils
+      state: present
+      lock_timeout: 180
+    become: true
+
+    - name: Configure SNMP v2c Community
+    lineinfile:
+      path: /etc/snmp/snmpd.conf
+      regexp: 'com2sec notConfigUser  default       public'
+      line: 'com2sec notConfigUser  default       <COMMUNITY>'
+      backrefs: true
+    become: true
